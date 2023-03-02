@@ -1,17 +1,19 @@
 #include <stdio.h>
 #include <string.h>
 
+#define TITLE_SIZE 256
+
 typedef void (*ExerciseFn)(void);
 
 typedef struct {
 	ExerciseFn fn;
 	unsigned int number;
-	char title[256];
+	char title[TITLE_SIZE];
 } Exercise;
 
 typedef struct {
 	Exercise exercises[20];
-	size_t size;
+	int size;
 } Lesson;
 
 Lesson lesson_new(void) {
@@ -22,25 +24,39 @@ Lesson lesson_new(void) {
 	return lesson;
 }
 
-void lesson_add_exercise(Lesson *lesson, ExerciseFn fn, char title[256]) {
+void lesson_add_exercise(Lesson *lesson, ExerciseFn fn) {
 	Exercise exercise = {
 		.fn = fn,
 		.number = lesson->size + 1,
 	};
 
-	strncpy(exercise.title, title, 256);
+	lesson->exercises[lesson->size] = exercise;
+	lesson->size++;
+}
+
+void lesson_add_exercise_with_title(Lesson *lesson, ExerciseFn fn, char title[TITLE_SIZE - 32]) {
+	Exercise exercise = {
+		.fn = fn,
+		.number = lesson->size + 1,
+	};
+
+	char title_mod[TITLE_SIZE] = ": ";
+	strncat(title_mod, title, TITLE_SIZE);
+
+	strncpy(exercise.title, title_mod, TITLE_SIZE);
 
 	lesson->exercises[lesson->size] = exercise;
 	lesson->size++;
 }
 
 void lesson_display(Lesson lesson) {
-	for (size_t i = 0; i < lesson.size; i++) {
+	for (int i = 0; i < lesson.size; i++) {
 		const Exercise exercise = lesson.exercises[i];
 
-		printf("[%u]: ", exercise.number);
-		fputs(exercise.title, stdout);
-		printf("\n");
+		char out[TITLE_SIZE + 32] = "[%u]";
+		strncat(out, exercise.title, TITLE_SIZE + 32);
+		strncat(out, "\n", TITLE_SIZE + 32);
+		printf(out, exercise.number);
 	}
 
 	printf("\n");
@@ -54,7 +70,7 @@ void lesson_select_exercise(Lesson lesson) {
 
 	printf("\n");
 
-	for (size_t i = 0; i < lesson.size; i++) {
+	for (int i = 0; i < lesson.size; i++) {
 		const Exercise exercise = lesson.exercises[i];
 
 		if (selected_num == exercise.number) {

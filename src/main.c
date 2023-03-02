@@ -213,12 +213,12 @@ void six() {
 int main(void) {
     Lesson lesson = lesson_new();
 
-    lesson_add_exercise(&lesson, one, "Um");
-    lesson_add_exercise(&lesson, two, "Dois");
-    lesson_add_exercise(&lesson, three, "Tres");
-    lesson_add_exercise(&lesson, four, "Quatro");
-    lesson_add_exercise(&lesson, five, "Cinco");
-    lesson_add_exercise(&lesson, six, "Seis");
+    lesson_add_exercise(&lesson, one);
+    lesson_add_exercise(&lesson, two);
+    lesson_add_exercise(&lesson, three);
+    lesson_add_exercise(&lesson, four);
+    lesson_add_exercise(&lesson, five);
+    lesson_add_exercise(&lesson, six);
 
     lesson_display(lesson);
     lesson_select_exercise(lesson);
