@@ -1,6 +1,6 @@
 # Mensagem para a professora
 
-Esse projeto é um teste para ver se vou poder mandar as tarefas nesse formato, então caso o programa principal não compile, tem uma versão alternativa que usa o formato anterior, explicada em "processo manual não funcionou".
+Esse projeto é um teste para ver se vou poder mandar as tarefas nesse formato, então caso o programa principal não compile, tem uma versão alternativa que usa o formato anterior, explicada em "Nenhuma das alternativas anteriores funcionaram".
 
 # Compilação e execução
 
