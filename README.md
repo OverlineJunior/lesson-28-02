@@ -14,8 +14,8 @@ Alterar o compilador no *makefile* (está como *clang* no target *main.exe*)
 
 ## Não tem make instalado
 
-Compilar e executar *main.c* manualmente, de preferencia do mesmo jeito feito no target *main.exe* do *makefile*
+Compilar e executar *main.c* manualmente, do mesmo jeito feito no target *main.exe* do *makefile* (linkando *libs/lesson/lesson.c* e usando ```-lm``` para dar suporte a *math.h*)
 
 ## Nenhuma das alternativas anteriores funcionaram
 
-Compilar e executar o arquivo *main.c* dentro do diretório *alt*
+Compilar e executar o arquivo *main.c* dentro do diretório *alt*, não esquecendo de usar ```-lm```
